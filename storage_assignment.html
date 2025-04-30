@@ -1,0 +1,61 @@
+<!--Create a simple application which displays two counts:Local Score, Session Score and a button to increment these counts. Local score must persist in Local Storage and Session score must persist in Session Storage and must reset on closing the session.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Counter Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Score Counter Application</h1>
+    <h2>Local Score: <span id="localScore">0</span></h2>
+    <h2>Session Score: <span id="sessionScore">0</span></h2>
+    <button id="incrementLocalButton">Increment Local Score</button>
+    <button id="incrementSessionButton">Increment Session Score</button>
+    <button id="resetButton">Reset Scores</button>
+
+    <script>
+        let localScore = parseInt(localStorage.getItem("localScore")) || 0;
+        document.getElementById("localScore").innerText = localScore; // Display local score
+
+    
+        let sessionScore = parseInt(sessionStorage.getItem("sessionScore")) || 0;
+        document.getElementById("sessionScore").innerText = sessionScore; // Display session score
+
+        document.getElementById("incrementLocalButton").addEventListener("click", () => {
+            localScore++; // Increment the local score
+            localStorage.setItem("localScore", localScore); // Save to localStorage
+            document.getElementById("localScore").innerText = localScore; // Update displayed local score
+        });
+
+    
+        document.getElementById("incrementSessionButton").addEventListener("click", () => {
+            sessionScore++; // Increment the session score
+            sessionStorage.setItem("sessionScore", sessionScore); // Save to sessionStorage
+            document.getElementById("sessionScore").innerText = sessionScore; // Update displayed session score
+        });
+
+        // Reset scores
+        document.getElementById("resetButton").addEventListener("click", () => {
+            localScore = 0;
+            sessionScore = 0; 
+            localStorage.setItem("localScore", localScore); 
+            sessionStorage.setItem("sessionScore", sessionScore); 
+            document.getElementById("localScore").innerText = localScore;
+            document.getElementById("sessionScore").innerText = sessionScore; 
+        });
+    </script>
+</body>
+</html>
