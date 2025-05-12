@@ -12,8 +12,12 @@ const NameForm: React.FC = () => {
 
   return (
     <div className='name-form'>
-      <Input value={name} onChange={(e) => setName(e.target.value)} />
-      <Button onClick={handlePrintName} />
+      <Input value={name} 
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Write your name" 
+        type="text"
+        />
+      <Button onClick={handlePrintName} text="PRINT" />
     </div>
   );
 };
