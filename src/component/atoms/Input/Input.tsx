@@ -4,15 +4,17 @@ import './input.css'
 interface InputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string; 
+  type?: string;
 }
 
-const Input: React.FC<InputProps> = ({ value, onChange }) => {
+const Input: React.FC<InputProps> = ({ value, onChange,placeholder = 'Write your name', type = 'text' }) => {
   return (
     <input
-      type="text"
+      type={text}
       value={value}
       onChange={onChange}
-      placeholder="Write your name"
+      placeholder={placeholder}
       className="input"
     />
   );
